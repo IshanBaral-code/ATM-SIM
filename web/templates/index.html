@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Apex Federal Bank - Institutional Online Banking & ATM Platform{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section style="padding: 50px 0 70px; text-align: center; position: relative;">
+    <div style="display: inline-block; padding: 6px 16px; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 30px; font-size: 0.85rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 20px;">
+        ⚡ NEXT-GEN BANKING & ATM INTEGRATION
+    </div>
+    
+    <h1 style="font-size: 3.2rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; max-width: 850px; margin: 0 auto 20px;">
+        Institutional Financial Management, <span style="background: linear-gradient(135deg, #38BDF8, #2563EB); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Anytime, Anywhere.</span>
+    </h1>
+
+    <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 650px; margin: 0 auto 36px; line-height: 1.6;">
+        Welcome to Apex Federal Bank. Manage accounts online, transfer money in real time, and access thousands of surcharge-free smart ATMs across the nation.
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+        <a href="{{ url_for('auth.login') }}" class="btn btn-primary" style="padding: 14px 28px; font-size: 1.05rem;">
+            Sign In to Online Banking ▶
+        </a>
+        <a href="{{ url_for('public.atm_locator') }}" class="btn btn-outline" style="padding: 14px 24px; font-size: 1.05rem;">
+            Find Nearest ATM
+        </a>
+    </div>
+</section>
+
+<!-- Financial Rates Ticker -->
+<section style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px 30px; margin-bottom: 50px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center;">
+        <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Apex High-Yield Savings</div>
+            <div style="font-size: 1.8rem; font-weight: 700; color: #34D399; margin-top: 4px;">5.15% <span style="font-size: 0.9rem;">APY</span></div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary);">10x National Average</div>
+        </div>
+        <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Checking Maintenance Fee</div>
+            <div style="font-size: 1.8rem; font-weight: 700; color: #38BDF8; margin-top: 4px;">$0.00</div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary);">No Minimum Balance</div>
+        </div>
+        <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">ATM Surcharges</div>
+            <div style="font-size: 1.8rem; font-weight: 700; color: #34D399; margin-top: 4px;">$0.00</div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary);">Nationwide Network</div>
+        </div>
+        <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">FDIC Insurance Coverage</div>
+            <div style="font-size: 1.8rem; font-weight: 700; color: #F8FAFC; margin-top: 4px;">$250,000</div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary);">Federal Backing</div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Grid -->
+<section style="margin-bottom: 60px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 2rem; font-weight: 700;">Engineered for High-Security Banking</h2>
+        <p style="color: var(--text-secondary); margin-top: 8px;">Explore why our combined Web and ATM ecosystem provides an unbeatable banking experience.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+        <div class="card-panel">
+            <div style="font-size: 2.2rem; margin-bottom: 12px;">🏧</div>
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 8px;">Smart Multi-Note Dispensing</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                Our physical ATM terminals feature intelligent bill cassettes carrying $100, $50, $20, and $10 notes, dynamically optimized to give you exact change and denomination preferences.
+            </p>
+        </div>
+
+        <div class="card-panel">
+            <div style="font-size: 2.2rem; margin-bottom: 12px;">🔄</div>
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 8px;">Instant Atomic Transfers</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                Move funds seamlessly between your checking and savings accounts, or send payments to other Apex Federal Bank accounts with zero delays and guaranteed transactional consistency.
+            </p>
+        </div>
+
+        <div class="card-panel">
+            <div style="font-size: 2.2rem; margin-bottom: 12px;">🔒</div>
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 8px;">One-Touch Card Lock</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                Misplaced your debit card? Instantly freeze your card from the web portal. It immediately prevents any ATM withdrawals or point-of-sale transactions until you choose to unfreeze it.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Project Demo Accounts Showcase -->
+<section style="background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(15, 23, 42, 0.5)); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: var(--radius-lg); padding: 36px; text-align: center;">
+    <h3 style="font-size: 1.4rem; font-weight: 700; color: #FFFFFF;">University Project Fast-Test Profiles</h3>
+    <p style="color: var(--text-secondary); max-width: 650px; margin: 8px auto 24px;">
+        Click any profile below to sign in instantly without typing and test all banking workflows:
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+        <a href="{{ url_for('auth.fast_login', card_number='4532015011223341', pin='1234') }}" class="btn btn-outline" style="border-color: #38BDF8;">
+            👤 Alexander Vance ($4,850 Checking)
+        </a>
+        <a href="{{ url_for('auth.fast_login', card_number='4532882011223344', pin='9999') }}" class="btn btn-outline" style="border-color: #34D399;">
+            💎 Eleanor Sterling ($85,400 HNW)
+        </a>
+        <a href="{{ url_for('auth.fast_login', card_number='4532009111223343', pin='0000') }}" class="btn btn-outline" style="border-color: #F59E0B;">
+            🎓 Marcus Brody ($45 Student)
+        </a>
+        <a href="{{ url_for('auth.fast_login', card_number='4000123411223342', pin='7777') }}" class="btn btn-outline" style="border-color: #F87171;">
+            🛠 System Admin (Vault Console)
+        </a>
+    </div>
+</section>
+{% endblock %}

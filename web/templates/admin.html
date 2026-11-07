@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Console - {{ BANK_NAME }}{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <div style="display: inline-block; padding: 2px 10px; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: 4px; font-size: 0.75rem; color: #FCD34D; font-weight: 700; margin-bottom: 6px;">
+            SECURITY LEVEL 5 • FLEET ADMIN
+        </div>
+        <h1 class="page-title">ATM Fleet & Vault Console</h1>
+        <p class="page-subtitle">Hardware diagnostics, cassette levels, and regulatory audit trail</p>
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <form method="POST" action="{{ url_for('admin.refill_vault') }}">
+            <button type="submit" class="btn btn-success">
+                🔄 Replenish All Vault Cassettes
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Vault Inventory Metrics -->
+<div class="card-panel" style="margin-bottom: 28px;">
+    <div class="card-header">
+        <div>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">KIOSK #{{ terminal_id }}</span>
+            <h2 class="card-title">Hardware Cassette Inventory</h2>
+        </div>
+        <div style="text-align: right;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Total Cash in Vault</div>
+            <div style="font-size: 1.8rem; font-weight: 800; color: #34D399; font-family: var(--font-mono);">
+                {{ total_vault | currency }}
+            </div>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+        {% for c in cassette_stats %}
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-weight: 700; font-size: 1.1rem; color: #38BDF8;">${{ c.denomination }} Bills</span>
+                    <span style="font-size: 0.8rem; color: var(--text-secondary);">{{ c.count }} / {{ c.max }} Notes</span>
+                </div>
+
+                <div style="height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; margin-bottom: 8px;">
+                    <div style="height: 100%; width: {{ c.pct }}%; background: {% if c.pct < 20 %}#EF4444{% elif c.pct < 50 %}#F59E0B{% else %}#10B981{% endif %};"></div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                    <span style="color: var(--text-muted);">Cassette Value:</span>
+                    <strong style="color: #F8FAFC; font-family: var(--font-mono);">{{ c.value | currency }}</strong>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Customer Accounts Directory -->
+<div class="card-panel" style="margin-bottom: 28px;">
+    <div class="card-header">
+        <h2 class="card-title">User Accounts Directory</h2>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">Active Database Records</span>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table-modern">
+            <thead>
+                <tr>
+                    <th>Account Holder</th>
+                    <th>Card Number</th>
+                    <th>Primary Account</th>
+                    <th>Account Type</th>
+                    <th>Card Status</th>
+                    <th style="text-align: right;">Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for acc in demo_cards %}
+                    <tr>
+                        <td><strong>{{ acc.holder_name }}</strong></td>
+                        <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-cyan);">{{ acc.card_number }}</td>
+                        <td style="font-family: var(--font-mono); font-size: 0.85rem;">{{ acc.primary_account_number }}</td>
+                        <td>{{ acc.account_type }}</td>
+                        <td>
+                            {% if acc.is_blocked %}
+                                <span class="badge badge-danger">🔒 BLOCKED</span>
+                            {% else %}
+                                <span class="badge badge-success">● ACTIVE</span>
+                            {% endif %}
+                        </td>
+                        <td style="text-align: right; font-weight: 700; color: #34D399; font-family: var(--font-mono);">
+                            {{ acc.balance | currency }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Regulatory Audit Trail -->
+<div class="card-panel">
+    <div class="card-header">
+        <h2 class="card-title">Regulatory Audit Trail</h2>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">Real-Time Event Logs</span>
+    </div>
+
+    <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+        <table class="table-modern">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Severity</th>
+                    <th>Event Type</th>
+                    <th>Card Masked</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in audit_logs %}
+                    <tr>
+                        <td style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); white-space: nowrap;">
+                            {{ log.timestamp }}
+                        </td>
+                        <td>
+                            <span class="badge {% if log.severity == 'SECURITY' %}badge-danger{% elif log.severity == 'WARNING' %}badge-warning{% else %}badge-info{% endif %}">
+                                {{ log.severity }}
+                            </span>
+                        </td>
+                        <td style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600;">
+                            {{ log.event_type }}
+                        </td>
+                        <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-cyan);">
+                            {{ log.card_masked }}
+                        </td>
+                        <td style="font-size: 0.85rem; color: var(--text-secondary);">
+                            {{ log.details }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

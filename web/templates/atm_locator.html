@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}ATM & Branch Network - {{ BANK_NAME }}{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1 class="page-title">ATM & Kiosk Fleet Network</h1>
+        <p class="page-subtitle">24/7 Surcharge-Free Automated Teller Machines with live status tracking</p>
+    </div>
+    <a href="{{ url_for('api.atm_status') }}" target="_blank" class="btn btn-outline">
+        📡 Live JSON Telemetry API
+    </a>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px;">
+    {% for term in terminals %}
+        <div class="card-panel" style="{% if term.is_primary %}border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);{% endif %}">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                <div>
+                    <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600;">
+                        TERMINAL #{{ term.id }}
+                    </span>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; margin-top: 2px;">{{ term.name }}</h3>
+                </div>
+                <span class="badge badge-success">
+                    ● {{ term.status }}
+                </span>
+            </div>
+
+            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 14px;">
+                📍 {{ term.address }}<br>
+                {{ term.city }}
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Vault Cash Stock:</span>
+                <strong style="font-size: 1.1rem; color: #34D399; font-family: var(--font-mono);">{{ term.cash_available }}</strong>
+            </div>
+
+            <div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px;">Supported Features:</div>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                    {% for feat in term.features %}
+                        <span style="padding: 2px 8px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 4px; font-size: 0.75rem; color: var(--text-secondary);">
+                            ✓ {{ feat }}
+                        </span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% if term.is_primary %}
+                <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.8rem; color: var(--accent-cyan);">⭐ Connected to Python ATM Simulation</span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Terminal #APX-4821</span>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

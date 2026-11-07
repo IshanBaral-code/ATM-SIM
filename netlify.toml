@@ -1,0 +1,18 @@
+[build]
+  functions = "netlify/functions"
+  publish = "web/static"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"
+
+# Static assets rewrite
+[[redirects]]
+  from = "/static/*"
+  to = "/:splat"
+  status = 200
+
+# Route all incoming requests to the serverless Flask function
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/app"
+  status = 200

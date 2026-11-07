@@ -1,0 +1,12 @@
+# Web Application Framework
+Flask>=3.0.0
+Werkzeug>=3.0.0
+
+# Production WSGI Web Servers
+gunicorn>=21.2.0    # For Linux Cloud Hosts (Render, Railway, Heroku, AWS, DigitalOcean)
+waitress>=3.0.0     # For Windows Local Production Hosting
+
+# ATM Kiosk & Audio Emulation (Optional)
+colorama>=0.4.6
+pillow>=11.0.0
+pyttsx3>=2.90

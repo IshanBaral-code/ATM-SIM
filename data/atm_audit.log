@@ -1,0 +1,106 @@
+[2026-11-06 19:59:42] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $800.00 from ACT-1001-CHK. New bal: $4,050.00
+[2026-11-06 19:59:42] [INFO ] [DEPOSIT           ] Card: ****-****-****-3341 | Deposited $500.00 into ACT-1001-CHK. New bal: $5,350.00
+[2026-11-06 19:59:42] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 19:59:42] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 1 attempt(s) remaining.
+[2026-11-06 19:59:42] [SECURITY] [CARD_LOCKED       ] Card: ****-****-****-3341 | Card locked after 3 consecutive failed PIN attempts
+[2026-11-06 19:59:42] [SECURITY] [AUTH_BLOCKED      ] Card: ****-****-****-3341 | Access attempted on locked card
+[2026-11-06 19:59:43] [SECURITY] [PIN_CHANGE        ] Card: ****-****-****-3341 | Card PIN updated successfully.
+[2026-11-06 19:59:43] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 19:59:43] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 19:59:43] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 19:59:44] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $200.00 from ACT-1001-CHK. New bal: $4,650.00
+[2026-11-06 19:59:44] [INFO ] [TRANSFER          ] Card: ****-****-****-3341 | Transferred $300.00 from ACT-1001-CHK to ACT-1002-SAV
+[2026-11-06 20:00:20] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $800.00 from ACT-1001-CHK. New bal: $4,050.00
+[2026-11-06 20:00:20] [INFO ] [DEPOSIT           ] Card: ****-****-****-3341 | Deposited $500.00 into ACT-1001-CHK. New bal: $5,350.00
+[2026-11-06 20:00:20] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:00:20] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 1 attempt(s) remaining.
+[2026-11-06 20:00:20] [SECURITY] [CARD_LOCKED       ] Card: ****-****-****-3341 | Card locked after 3 consecutive failed PIN attempts
+[2026-11-06 20:00:20] [SECURITY] [AUTH_BLOCKED      ] Card: ****-****-****-3341 | Access attempted on locked card
+[2026-11-06 20:00:21] [SECURITY] [PIN_CHANGE        ] Card: ****-****-****-3341 | Card PIN updated successfully.
+[2026-11-06 20:00:21] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:00:21] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:00:21] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:00:22] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $200.00 from ACT-1001-CHK. New bal: $4,650.00
+[2026-11-06 20:00:22] [INFO ] [TRANSFER          ] Card: ****-****-****-3341 | Transferred $300.00 from ACT-1001-CHK to ACT-1002-SAV
+[2026-11-06 20:08:24] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $800.00 from ACT-1001-CHK. New bal: $4,050.00
+[2026-11-06 20:08:25] [INFO ] [DEPOSIT           ] Card: ****-****-****-3341 | Deposited $500.00 into ACT-1001-CHK. New bal: $5,350.00
+[2026-11-06 20:08:25] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:08:25] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 1 attempt(s) remaining.
+[2026-11-06 20:08:25] [SECURITY] [CARD_LOCKED       ] Card: ****-****-****-3341 | Card locked after 3 consecutive failed PIN attempts
+[2026-11-06 20:08:25] [SECURITY] [AUTH_BLOCKED      ] Card: ****-****-****-3341 | Access attempted on locked card
+[2026-11-06 20:08:25] [SECURITY] [PIN_CHANGE        ] Card: ****-****-****-3341 | Card PIN updated successfully.
+[2026-11-06 20:08:25] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:08:26] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:08:26] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:08:26] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $200.00 from ACT-1001-CHK. New bal: $4,650.00
+[2026-11-06 20:08:26] [INFO ] [TRANSFER          ] Card: ****-****-****-3341 | Transferred $300.00 from ACT-1001-CHK to ACT-1002-SAV
+[2026-11-06 20:09:12] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $800.00 from ACT-1001-CHK. New bal: $4,050.00
+[2026-11-06 20:09:12] [INFO ] [DEPOSIT           ] Card: ****-****-****-3341 | Deposited $500.00 into ACT-1001-CHK. New bal: $5,350.00
+[2026-11-06 20:09:13] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:09:13] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 1 attempt(s) remaining.
+[2026-11-06 20:09:13] [SECURITY] [CARD_LOCKED       ] Card: ****-****-****-3341 | Card locked after 3 consecutive failed PIN attempts
+[2026-11-06 20:09:13] [SECURITY] [AUTH_BLOCKED      ] Card: ****-****-****-3341 | Access attempted on locked card
+[2026-11-06 20:09:13] [SECURITY] [PIN_CHANGE        ] Card: ****-****-****-3341 | Card PIN updated successfully.
+[2026-11-06 20:09:13] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:09:13] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:09:14] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:09:14] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $200.00 from ACT-1001-CHK. New bal: $4,650.00
+[2026-11-06 20:09:14] [INFO ] [TRANSFER          ] Card: ****-****-****-3341 | Transferred $300.00 from ACT-1001-CHK to ACT-1002-SAV
+[2026-11-06 20:09:15] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:09:44] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $800.00 from ACT-1001-CHK. New bal: $4,050.00
+[2026-11-06 20:09:44] [INFO ] [DEPOSIT           ] Card: ****-****-****-3341 | Deposited $500.00 into ACT-1001-CHK. New bal: $5,350.00
+[2026-11-06 20:09:45] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:09:45] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 1 attempt(s) remaining.
+[2026-11-06 20:09:45] [SECURITY] [CARD_LOCKED       ] Card: ****-****-****-3341 | Card locked after 3 consecutive failed PIN attempts
+[2026-11-06 20:09:45] [SECURITY] [AUTH_BLOCKED      ] Card: ****-****-****-3341 | Access attempted on locked card
+[2026-11-06 20:09:45] [SECURITY] [PIN_CHANGE        ] Card: ****-****-****-3341 | Card PIN updated successfully.
+[2026-11-06 20:09:45] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:09:45] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:09:46] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:09:46] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $200.00 from ACT-1001-CHK. New bal: $4,650.00
+[2026-11-06 20:09:46] [INFO ] [TRANSFER          ] Card: ****-****-****-3341 | Transferred $300.00 from ACT-1001-CHK to ACT-1002-SAV
+[2026-11-06 20:09:46] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:10:03] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $800.00 from ACT-1001-CHK. New bal: $4,050.00
+[2026-11-06 20:10:03] [INFO ] [DEPOSIT           ] Card: ****-****-****-3341 | Deposited $500.00 into ACT-1001-CHK. New bal: $5,350.00
+[2026-11-06 20:10:04] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:10:04] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 1 attempt(s) remaining.
+[2026-11-06 20:10:04] [SECURITY] [CARD_LOCKED       ] Card: ****-****-****-3341 | Card locked after 3 consecutive failed PIN attempts
+[2026-11-06 20:10:04] [SECURITY] [AUTH_BLOCKED      ] Card: ****-****-****-3341 | Access attempted on locked card
+[2026-11-06 20:10:04] [SECURITY] [PIN_CHANGE        ] Card: ****-****-****-3341 | Card PIN updated successfully.
+[2026-11-06 20:10:04] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:10:04] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:10:05] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:10:05] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $200.00 from ACT-1001-CHK. New bal: $4,650.00
+[2026-11-06 20:10:05] [INFO ] [TRANSFER          ] Card: ****-****-****-3341 | Transferred $300.00 from ACT-1001-CHK to ACT-1002-SAV
+[2026-11-06 20:10:05] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:10:05] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $100.00 from ACT-1001-CHK. New bal: $4,750.00
+[2026-11-06 20:10:05] [INFO ] [DEPOSIT           ] Card: ****-****-****-3341 | Deposited $300.00 into ACT-1001-CHK. New bal: $5,050.00
+[2026-11-06 20:10:05] [INFO ] [TRANSFER          ] Card: ****-****-****-3341 | Transferred $200.00 from ACT-1001-CHK to ACT-1002-SAV
+[2026-11-06 20:27:33] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $800.00 from ACT-1001-CHK. New bal: $4,050.00
+[2026-11-06 20:27:34] [INFO ] [DEPOSIT           ] Card: ****-****-****-3341 | Deposited $500.00 into ACT-1001-CHK. New bal: $5,350.00
+[2026-11-06 20:27:34] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:27:34] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 1 attempt(s) remaining.
+[2026-11-06 20:27:34] [SECURITY] [CARD_LOCKED       ] Card: ****-****-****-3341 | Card locked after 3 consecutive failed PIN attempts
+[2026-11-06 20:27:34] [SECURITY] [AUTH_BLOCKED      ] Card: ****-****-****-3341 | Access attempted on locked card
+[2026-11-06 20:27:35] [SECURITY] [PIN_CHANGE        ] Card: ****-****-****-3341 | Card PIN updated successfully.
+[2026-11-06 20:27:35] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:27:35] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:27:35] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:27:35] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $200.00 from ACT-1001-CHK. New bal: $4,650.00
+[2026-11-06 20:27:36] [INFO ] [TRANSFER          ] Card: ****-****-****-3341 | Transferred $300.00 from ACT-1001-CHK to ACT-1002-SAV
+[2026-11-06 20:27:36] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:27:36] [INFO ] [WITHDRAWAL        ] Card: ****-****-****-3341 | Dispensed $100.00 from ACT-1001-CHK. New bal: $4,750.00
+[2026-11-06 20:27:36] [INFO ] [DEPOSIT           ] Card: ****-****-****-3341 | Deposited $300.00 into ACT-1001-CHK. New bal: $5,050.00
+[2026-11-06 20:27:36] [INFO ] [TRANSFER          ] Card: ****-****-****-3341 | Transferred $200.00 from ACT-1001-CHK to ACT-1002-SAV
+[2026-11-06 20:27:36] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:27:36] [INFO ] [WEB_LOGIN_SUCCESS ] Card: ****-****-****-3341 | Customer signed into Web Portal
+[2026-11-06 20:27:36] [INFO ] [TRANSFER          ] Card: ****-****-****-3341 | Transferred $100.00 from ACT-1001-CHK to ACT-1002-SAV
+[2026-11-06 20:27:37] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:27:37] [INFO ] [WEB_LOGIN_SUCCESS ] Card: ****-****-****-3341 | Customer signed into Web Portal
+[2026-11-06 20:27:37] [SECURITY] [WEB_CARD_STATUS_CHANGE] Card: ****-****-****-3341 | Card frozen via Web Portal
+[2026-11-06 20:27:37] [SECURITY] [WEB_CARD_STATUS_CHANGE] Card: ****-****-****-3341 | Card unfrozen and active via Web Portal
+[2026-11-06 20:27:37] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:27:37] [INFO ] [WEB_LOGIN_SUCCESS ] Card: ****-****-****-3341 | Customer signed into Web Portal
+[2026-11-06 20:27:37] [WARNING] [AUTH_INCORRECT_PIN] Card: ****-****-****-3341 | Incorrect PIN entered. 2 attempt(s) remaining.
+[2026-11-06 20:27:37] [INFO ] [AUTH_SUCCESS      ] Card: ****-****-****-3341 | Card authenticated for holder Alexander Vance
+[2026-11-06 20:27:37] [INFO ] [WEB_LOGIN_SUCCESS ] Card: ****-****-****-3341 | Customer signed into Web Portal

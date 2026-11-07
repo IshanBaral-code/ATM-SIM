@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Cards & Limits - {{ BANK_NAME }}{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Debit Card & Security Center</h1>
+        <p class="page-subtitle">Manage card status, monitor ATM limits, and update secret PINs</p>
+    </div>
+    <a href="{{ url_for('dashboard.overview') }}" class="btn btn-outline">
+        ◀ Back to Dashboard
+    </a>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 1050px; margin: 0 auto;">
+    <!-- Left Column: Virtual Card & Controls -->
+    <div>
+        <div class="card-panel">
+            <h2 class="card-title" style="margin-bottom: 16px;">Apex Platinum Debit Card</h2>
+
+            <!-- 3D Realistic Virtual Card -->
+            <div class="virtual-card-wrapper">
+                <div class="virtual-card {% if card.is_blocked %}frozen{% endif %}" id="virtual-card-elem">
+                    <div class="card-top">
+                        <span class="card-bank-name">{{ BANK_NAME }}</span>
+                        <span style="font-size: 0.85rem; color: #38BDF8; font-weight: 600;">CONTACTLESS ⦾</span>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="card-chip"></div>
+                        <span style="font-size: 0.8rem; color: #94A3B8; text-transform: uppercase;">EMV CHIP</span>
+                    </div>
+
+                    <div class="card-number">{{ formatted_card }}</div>
+
+                    <div class="card-bottom">
+                        <div>
+                            <div style="font-size: 0.7rem; color: #94A3B8;">CARDHOLDER</div>
+                            <div class="card-holder-name">{{ card.holder_name }}</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.7rem; color: #94A3B8;">EXPIRES</div>
+                            <div class="card-expiry">{{ card.expiry_date }}</div>
+                        </div>
+                        <div style="font-size: 1.1rem; font-weight: 800; font-style: italic; color: #60A5FA;">VISA</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Status & Instant Freeze Button -->
+            <div style="margin-top: 24px; padding: 18px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Card Status:</div>
+                    {% if card.is_blocked %}
+                        <div style="font-weight: 700; color: #F87171; font-size: 1.05rem;">🔒 FROZEN / BLOCKED</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">ATM withdrawals & purchases disabled.</div>
+                    {% else %}
+                        <div style="font-weight: 700; color: #34D399; font-size: 1.05rem;">● ACTIVE & OPERATIONAL</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Card is ready for ATM and online usage.</div>
+                    {% endif %}
+                </div>
+
+                <form method="POST" action="{{ url_for('cards.toggle_freeze') }}">
+                    {% if card.is_blocked %}
+                        <button type="submit" class="btn btn-success">
+                            🔓 Unfreeze Card
+                        </button>
+                    {% else %}
+                        <button type="submit" class="btn btn-danger">
+                            🔒 Freeze Card
+                        </button>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+
+        <!-- Daily ATM Withdrawal Limit Progress -->
+        <div class="card-panel" style="margin-top: 24px;">
+            <div class="card-header">
+                <h3 class="card-title">Daily ATM Withdrawal Limit</h3>
+                <span style="font-size: 0.85rem; color: var(--text-secondary);">Resets at Midnight</span>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 8px;">
+                <span>Used Today: <strong>{{ daily_spent | currency }}</strong></span>
+                <span>Max Limit: <strong>{{ daily_limit | currency }}</strong></span>
+            </div>
+
+            <div style="height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; margin-bottom: 8px;">
+                <div style="height: 100%; width: {{ limit_pct }}%; background: {% if limit_pct > 80 %}#EF4444{% else %}#38BDF8{% endif %}; transition: width 0.3s;"></div>
+            </div>
+
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-align: right;">
+                {{ limit_pct }}% of 24h limit utilized
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Change PIN Portal -->
+    <div>
+        <div class="card-panel">
+            <h2 class="card-title" style="margin-bottom: 8px;">Update Card PIN</h2>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px;">
+                Change the 4-digit PIN used for cash withdrawals at physical ATM terminals. Changes take effect instantly.
+            </p>
+
+            <form method="POST" action="{{ url_for('cards.change_pin') }}">
+                <div class="form-group">
+                    <label class="form-label" for="old_pin">Current 4-Digit PIN</label>
+                    <input 
+                        type="password" 
+                        id="old_pin" 
+                        name="old_pin" 
+                        class="form-control" 
+                        placeholder="••••" 
+                        maxlength="6" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="new_pin">New 4-Digit PIN</label>
+                    <input 
+                        type="password" 
+                        id="new_pin" 
+                        name="new_pin" 
+                        class="form-control" 
+                        placeholder="••••" 
+                        maxlength="6" 
+                        required
+                    >
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Avoid simple sequences like 1234 or 0000.</span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="confirm_pin">Confirm New PIN</label>
+                    <input 
+                        type="password" 
+                        id="confirm_pin" 
+                        name="confirm_pin" 
+                        class="form-control" 
+                        placeholder="••••" 
+                        maxlength="6" 
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">
+                    Update ATM PIN ▶
+                </button>
+            </form>
+        </div>
+
+        <!-- Security Recommendations -->
+        <div class="card-panel" style="margin-top: 24px; border-color: rgba(56, 189, 248, 0.2);">
+            <h3 class="card-title" style="font-size: 1rem; color: var(--accent-cyan); margin-bottom: 10px;">Security Tips</h3>
+            <ul style="list-style: none; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.8;">
+                <li>• Always cover the physical ATM keypad when entering your PIN.</li>
+                <li>• Never disclose your PIN to bank staff or in telephone calls.</li>
+                <li>• If you suspect unauthorized activity, freeze your card instantly using the button on the left.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

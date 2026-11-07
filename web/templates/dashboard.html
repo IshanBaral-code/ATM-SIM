@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - {{ BANK_NAME }}{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Welcome back, {{ card.holder_name }}</h1>
+        <p class="page-subtitle">Primary Card: {{ formatted_card }} | Member since 2024</p>
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <a href="{{ url_for('transfers.transfer') }}" class="btn btn-primary">
+            💸 Send Money
+        </a>
+        <a href="{{ url_for('cards.manage') }}" class="btn btn-outline">
+            💳 Manage Card
+        </a>
+    </div>
+</div>
+
+<!-- Total Liquid Net Worth Banner -->
+<div style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(15, 23, 42, 0.8)); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: var(--radius-md); padding: 24px 30px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+    <div>
+        <div style="font-size: 0.85rem; color: var(--accent-cyan); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">Total Liquid Net Worth</div>
+        <div style="font-size: 2.6rem; font-weight: 800; color: #FFFFFF; margin: 4px 0;">
+            {{ total_net_worth | currency }}
+        </div>
+        <div style="font-size: 0.85rem; color: #34D399; font-weight: 500;">
+            ✔ All balances FDIC-insured & active in real-time
+        </div>
+    </div>
+    <div style="display: flex; gap: 14px;">
+        <a href="{{ url_for('public.statement') }}" class="btn btn-outline" style="background: rgba(255,255,255,0.05);">
+            📄 View Full Statement
+        </a>
+        <a href="{{ url_for('public.download_csv') }}" class="btn btn-outline" style="background: rgba(255,255,255,0.05);">
+            📥 Download CSV
+        </a>
+    </div>
+</div>
+
+<!-- Account Cards Grid -->
+<div class="stats-grid">
+    {% for acc in accounts %}
+        <div class="stat-card {% if acc.account_type.value == 'CHECKING' %}checking{% else %}savings{% endif %}">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <div class="stat-label">{{ acc.account_type.value }}</div>
+                    <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px;">
+                        {{ acc.account_number }}
+                    </div>
+                </div>
+                <button class="btn btn-outline btn-copy" data-copy="{{ acc.account_number }}" style="padding: 4px 8px; font-size: 0.75rem;">
+                    Copy #
+                </button>
+            </div>
+
+            <div class="stat-value">
+                {{ acc.balance | currency }}
+            </div>
+
+            <div class="stat-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+                <span>Today's ATM Withdrawn: <strong>{{ acc.daily_withdrawn_today | currency }}</strong></span>
+                <a href="{{ url_for('transfers.transfer') }}" style="font-size: 0.85rem; font-weight: 600;">Transfer →</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Activity & Analytics Grid -->
+<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-top: 28px;">
+    <!-- Recent Transactions Table -->
+    <div class="card-panel">
+        <div class="card-header">
+            <h2 class="card-title">Recent Activity</h2>
+            <a href="{{ url_for('public.statement') }}" style="font-size: 0.85rem;">View All ({{ transactions | length }}) →</a>
+        </div>
+
+        {% if not transactions %}
+            <div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">
+                <div style="font-size: 2rem; margin-bottom: 8px;">📭</div>
+                No recent transactions recorded on this card.
+            </div>
+        {% else %}
+            <div class="table-responsive">
+                <table class="table-modern">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th style="text-align: right;">Amount</th>
+                            <th style="text-align: right;">Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for tx in transactions[:8] %}
+                            <tr>
+                                <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary);">
+                                    {{ tx.timestamp.strftime("%b %d, %H:%M") }}
+                                </td>
+                                <td>
+                                    <strong>{{ tx.description if tx.description else tx.tx_type.value }}</strong>
+                                    <div style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">
+                                        {{ tx.tx_id }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge {% if tx.tx_type.value in ['CASH DEPOSIT', 'TRANSFER FROM'] %}badge-success{% else %}badge-info{% endif %}">
+                                        {{ tx.tx_type.value }}
+                                    </span>
+                                </td>
+                                <td style="text-align: right; font-weight: 600; color: {% if tx.tx_type.value in ['CASH DEPOSIT', 'TRANSFER FROM'] %}#34D399{% else %}#F87171{% endif %};">
+                                    {% if tx.tx_type.value in ['CASH DEPOSIT', 'TRANSFER FROM'] %}+{% else %}-{% endif %}{{ tx.amount | currency }}
+                                </td>
+                                <td style="text-align: right; font-family: var(--font-mono); font-size: 0.9rem;">
+                                    {{ tx.balance_after | currency }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Quick Services & Spending Highlights -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+        <!-- Virtual Card Sneak Peek -->
+        <div class="card-panel">
+            <div class="card-header">
+                <h3 class="card-title">Virtual Debit Card</h3>
+                <a href="{{ url_for('cards.manage') }}" style="font-size: 0.85rem;">Manage →</a>
+            </div>
+
+            <div class="virtual-card {% if card.is_blocked %}frozen{% endif %}" style="height: 180px; padding: 18px; margin: 0 auto;">
+                <div class="card-top">
+                    <span class="card-bank-name">{{ BANK_NAME }}</span>
+                    <span style="font-size: 0.75rem; color: #38BDF8;">DEBIT PLATINUM</span>
+                </div>
+                <div class="card-chip" style="width: 34px; height: 26px; margin: 6px 0;"></div>
+                <div class="card-number" style="font-size: 1rem;">{{ masked_card }}</div>
+                <div class="card-bottom">
+                    <span class="card-holder-name" style="font-size: 0.8rem;">{{ card.holder_name }}</span>
+                    <span class="card-expiry">{{ card.expiry_date }}</span>
+                </div>
+            </div>
+
+            {% if card.is_blocked %}
+                <div style="margin-top: 12px; font-size: 0.8rem; color: #FCA5A5; text-align: center;">
+                    🔒 This card is currently FROZEN
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Activity Breakdown Widget -->
+        <div class="card-panel">
+            <h3 class="card-title" style="margin-bottom: 16px;">Activity Breakdown</h3>
+
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 4px;">
+                        <span>Cash Withdrawals</span>
+                        <strong style="color: #F87171;">{{ stats.withdrawals | currency }}</strong>
+                    </div>
+                    <div style="height: 6px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden;">
+                        <div style="height: 100%; width: 45%; background: #EF4444;"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 4px;">
+                        <span>Deposits</span>
+                        <strong style="color: #34D399;">{{ stats.deposits | currency }}</strong>
+                    </div>
+                    <div style="height: 6px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden;">
+                        <div style="height: 100%; width: 70%; background: #10B981;"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 4px;">
+                        <span>Fund Transfers</span>
+                        <strong style="color: #38BDF8;">{{ stats.transfers | currency }}</strong>
+                    </div>
+                    <div style="height: 6px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden;">
+                        <div style="height: 100%; width: 30%; background: #2563EB;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
